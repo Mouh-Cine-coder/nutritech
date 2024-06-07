@@ -1,0 +1,10 @@
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{ "username": "mod", "password": "mod123" }
+
+###
+
+GET http://127.0.0.1:8000/testToken
+Content-Type: application/json
+Authorization: token bf991f1c9d885f61c97ea65229a50f66183c1894
