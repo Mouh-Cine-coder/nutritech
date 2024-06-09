@@ -8,6 +8,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from .models import Product
+from .serializers import ProductSerializer
 
 
 
@@ -39,3 +41,13 @@ def register(request):
 @permission_classes([IsAuthenticated])
 def test_token(request):
     return Response("passed for {}".format(request.user.username))
+
+
+@api_view(['GET'])
+def getAllProducts(request):
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    
+    return Response(serializer.data)
+
+

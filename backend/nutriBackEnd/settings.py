@@ -25,16 +25,22 @@ SECRET_KEY = 'django-insecure-zuxr$hb=_i5$e-mu&az)m-@c3^&l49!5bi0+xt8z&f(wp0@ibn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://172.0.0.1:3000'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'nutriBackEnd',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    "corsheaders",
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
